@@ -33,6 +33,8 @@ public class login extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
               String unm=request.getParameter("uname");
               String pswd=request.getParameter("password");
+              String meth = request.getMethod();
+              out.println(meth);
               if(unm.equals("admin") && pswd.equals("admin")){
             out.println("<!DOCTYPE html>\n" +
 "<html lang=\"en-US\">\n" +

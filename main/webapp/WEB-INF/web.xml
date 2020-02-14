@@ -16,6 +16,18 @@
         <servlet-name>Signup</servlet-name>
         <servlet-class>com.vvp.ajt18004.Signup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>calculator</servlet-name>
+        <servlet-class>com.vvp.ajt18004.calculator</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>products</servlet-name>
+        <servlet-class>products</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Products</servlet-name>
+        <servlet-class>com.vvp.ajt18004.Products</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginx</servlet-name>
         <url-pattern>/loginx</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>Signup</servlet-name>
         <url-pattern>/Signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>calculator</servlet-name>
+        <url-pattern>/calculator</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>products</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Products</servlet-name>
+        <url-pattern>/Products</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

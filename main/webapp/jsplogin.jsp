@@ -1,3 +1,10 @@
+<%-- 
+    Document   : newjsp
+    Created on : 14-Feb-2020, 12:28:57 AM
+    Author     : renish
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -129,39 +136,56 @@
             </div>
         </section>
         <!-- header section -->
-
+            
         <section class="contact-wrapper pad-75 has-animation" data-delay="0">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-10 text-left offset-lg-1">
                         <h2>Login</h2>
-                        <p>Enter your valid credentials</p>
-
+                        <p>Enter your valid credentials</p> <br>
+ <%  
+            if(request.getParameter("submit") != null)
+            {
+                String output = "";
+                String username = request.getParameter("uname");
+                String password = request.getParameter("password");
+                if(username.isEmpty())
+                    output += "Please enter username!</br>";
+                if(password.isEmpty())
+                    output += "Please enter password!</br>";
+                    
+                    out.println("<script>");
+                if(username.equals("admin") && password.equals("admin")){
+                    out.println("alert('Login Successfull !')");
+ }
+                else {
+                    out.println("alert('Invalid Username or Password !')");
+ }
+                    out.println("</script");
+                out.println(output);
+            }
+        %>
                         <div id="contact-formular">
 
-                            <form id="contact-form" class="checkform" action="loginx" >
+                            <form id="contact-form" class="checkform" method="post">
 
 
                                 <div class="form-row clearfix form-field">
-                                    <label for="name" class="req">Username *</label>
+                                    <label for="name" >Username *</label>
                                     <input type="text" name="uname" class="name" value="" placeholder="Username"/>
                                 </div>
                                 <div class="form-row clearfix form-field">
-                                    <label for="password" class="req">Password *</label>
+                                    <label for="password">Password *</label>
                                     <input type="password" name="password" class="name" value="" placeholder="Password" />
                                 </div>
 
-                                <div id="form-note">
-                                    <div class="alert alert-error pl-0 pr-0">
-                                        <strong>Error</strong>: Please check your entries!
-                                    </div>
-                                </div>
+                            
 
                                 <div class="form-row form-submit">
                                     <div class="button-4">
                                         <div class="eff-4"></div>
-                                        <input type="submit" class="submit send_message" value="Login" />
+                                        <input type="submit" name="submit" class="submit send_message" value="Login" />
                                     </div>
                                 </div>
 
@@ -169,32 +193,13 @@
 
                         </div>
 
-
+           
+            
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- footer wrapper -->
-        <section class="footer-wrapper pad-75 bg-lightblue">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <ul class="social-icons-two list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-linedin"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-instagram"></i></a></li>
-                        </ul>
-                        <p class="copyright-text">Copyrights © 2018 <b>Cabe</b> Theme <br> All Rights Reserved.</p>
-                        <a href="#" class="back-top">BACK TO TOP</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- footer-wrapper -->
 
 
         <!-- SCRIPTS -->

@@ -1,9 +1,18 @@
+<%-- 
+    Document   : calculator
+    Created on : 03-Feb-2020, 12:44:52 PM
+    Author     : renish
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="error.jsp"%>
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Controller</title>
+        <title>Renish | Calculator</title>
         <meta name="description" content="Cabe - Minimal and Personal Blog Template">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
@@ -23,21 +32,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-        <style type="text/css">
-            .form-field input[type="password"], .form-field textarea {
-                margin-top: 0;
-                display: block;
-                width: 100%;
-                border: none;
-                margin-top: 8px;
-                font-family: 'Poppins', sans-serif;
-                font-size: 16px;
-                color: #999;
-                outline: none;
+
+        <style>
+            form .button-4{
+                margin-right: 20px;
+                margin-top: 5px; 
+                float: left;
             }
         </style>
-
-
     </head>
     <body>
 
@@ -73,7 +75,7 @@
                                         <li><a href="login.html">Login</a></li>
                                         <li><a href="table_generator.html">Table Generator</a></li>
                                         <li><a href="VisitorCounter">Visitor Counter</a>
-                                            
+
                                         </li>
 
                                     </ul> 
@@ -129,27 +131,63 @@
             </div>
         </section>
         <!-- header section -->
+        <%!
+            double ans;
+            double num1;
+            double num2;
 
+        %>
+        <%
+
+        
+
+ if(request.getParameter("operation") != null)
+            {
+                char op = request.getParameter("operation").charAt(0);
+                num1 = Double.parseDouble(request.getParameter("num1"));
+                num2 = Double.parseDouble(request.getParameter("num2"));
+            
+                switch(op)
+                {
+                    case '+': 
+                        ans = num1 + num2; 
+                        break;
+                    case '-': 
+                      ans = num1 - num2; 
+                           break;
+                    case '*': 
+                           ans = num1 * num2;   
+                            break;
+                    case '/': 
+                           ans = num1 / num2;  
+                    break;
+                }
+            }
+        %>
         <section class="contact-wrapper pad-75 has-animation" data-delay="0">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-10 text-left offset-lg-1">
-                        <h2>Login</h2>
-                        <p>Enter your valid credentials</p>
+                        <h2>Calculator</h2>
+                        <p>Enter Integer value as inputs.</p>
 
                         <div id="contact-formular">
 
-                            <form id="contact-form" class="checkform" action="loginx" >
+                            <form id="contact-form" class="checkform" >
 
 
                                 <div class="form-row clearfix form-field">
-                                    <label for="name" class="req">Username *</label>
-                                    <input type="text" name="uname" class="name" value="" placeholder="Username"/>
+                                    <label for="name" class="req">Operand 1</label>
+                                    <input type="text" name="num1" class="name" placeholder="<%= num1 %>"/>
                                 </div>
                                 <div class="form-row clearfix form-field">
-                                    <label for="password" class="req">Password *</label>
-                                    <input type="password" name="password" class="name" value="" placeholder="Password" />
+                                    <label for="name" class="req">Operand 2</label>
+                                    <input type="text" name="num2" class="name" placeholder="<%= num2 %>" />
+                                </div>
+                                <div class="form-row clearfix form-field">
+                                    <label for="name" class="req">Result</label>
+                                    <input type="text" name="answer" class="name" value="<%= ans %>" placeholder="output" readonly/>
                                 </div>
 
                                 <div id="form-note">
@@ -158,10 +196,30 @@
                                     </div>
                                 </div>
 
-                                <div class="form-row form-submit">
+                                <div class="form-submit">
                                     <div class="button-4">
                                         <div class="eff-4"></div>
-                                        <input type="submit" class="submit send_message" value="Login" />
+                                        <input type="submit" class="submit send_message" name="operation" value="+" />
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <div class="button-4">
+                                        <input type="submit" class="submit send_message" name="operation" value="-" />
+                                    </div>
+                                </div>
+                                <div class="form-row form-submit">
+                                    <div class="button-4">
+                                        <input type="submit" class="submit send_message" name="operation" value="*" />
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <div class="button-4">
+                                        <input type="submit" class="submit send_message" name="operation" value="/" />
+                                    </div>
+                                </div>
+                                <div class="form-submit">
+                                    <div class="button-4">
+                                        <input type="reset" value="reset" class="submit send_message"  />
                                     </div>
                                 </div>
 
@@ -176,25 +234,6 @@
         </section>
 
 
-        <!-- footer wrapper -->
-        <section class="footer-wrapper pad-75 bg-lightblue">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <ul class="social-icons-two list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="icon-google-plus"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-linedin"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="icon-instagram"></i></a></li>
-                        </ul>
-                        <p class="copyright-text">Copyrights © 2018 <b>Cabe</b> Theme <br> All Rights Reserved.</p>
-                        <a href="#" class="back-top">BACK TO TOP</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- footer-wrapper -->
 
 
         <!-- SCRIPTS -->
